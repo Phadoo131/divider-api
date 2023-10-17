@@ -6,8 +6,10 @@ This is a web application that allows you to book your queue for your favorite r
 
 ## Stacks
 
-- **Frontend**: TypeScript, React
-- **Backend**: Go, Gin
+- **Frontend**: TypeScript, React (nainaiprm)
+- **Backend**: Go, Gin (Phadoo131)
+- **Database**: PostgreSQL 15.3
+- **Others**: Docker, Figma
 
 ## Development Progress
 
