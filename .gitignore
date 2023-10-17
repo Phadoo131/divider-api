@@ -3,3 +3,9 @@ docker-compose.yml
 
 # Ignore Makefile
 Makefile
+
+# Ignore go.mod
+go.mod
+
+# Ignore go.sum
+go.sum
