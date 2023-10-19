@@ -1,6 +1,7 @@
 package db
 
 import (
+	_"fmt"
 	"context"
 	"database/sql"
 )

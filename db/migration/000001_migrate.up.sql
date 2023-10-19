@@ -3,6 +3,7 @@ CREATE TABLE "Client" (
   "Name" VARCHAR(255),
   "Email" VARCHAR(255),
   "Phone_Number" VARCHAR(20),
+  "Password" VARCHAR(20),
   "Address" TEXT
 );
 
@@ -11,6 +12,7 @@ CREATE TABLE "Booker" (
   "Name" VARCHAR(255),
   "Email" VARCHAR(255),
   "Phone_Number" VARCHAR(20),
+  "Password" VARCHAR(20),
   "Address" TEXT
 );
 

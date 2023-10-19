@@ -3,3 +3,9 @@ docker-compose.yml
 
 # Ignore Makefile
 Makefile
+
+# Ignore .env
+.env
+
+# Ignore Sqlc (Not generated yet)
+sqlc.yaml
