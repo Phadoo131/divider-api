@@ -5,42 +5,46 @@ import (
 )
 
 type Client struct{
-	ID int64 `json:"ClientID"`
-	Name string `json:"Name"`
-	Email string `json:"Email"`
-	PhoneNum string `json:"Phone_Number"`
-	PassWord string `json:"Password"`
-	Address string `json:"Address"`
+	ID int64 `json:"id"`
+	Name string `json:"name_client"`
+	Email string `json:"email"`
+	PhoneNum string `json:"phone_number"`
+	PassWord string `json:"pwd"`
+	Address string `json:"address_client"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 type Booker struct{
-	ID int64 `json:"BookerID"`
-	Name string `json:"Name"`
-	Email string `json:"Email"`
-	PhoneNum string `json:"Phone_Number"`
-	PassWord string `json:"Password"`
-	Address string `json:"Address"`
+	ID int64 `json:"id"`
+	Name string `json:"name_booker"`
+	Email string `json:"email"`
+	PhoneNum string `json:"phone_number"`
+	PassWord string `json:"pwd"`
+	Address string `json:"address_client"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 type Booking struct{
-	ID int64 `json:"BookingID"`
-	ClientID int64 `json:"ClientID"`
-	BookerID int64 `json:"BookerID"`
-	DateAndTime time.Time `json:"Date_and_Time"`
-	Status string `json:"Status"`
+	ID int64 `json:"id"`
+	ClientID int64 `json:"client_id"`
+	BookerID int64 `json:"booker_id"`
+	RestaurantID int64 `json:"restaurant_id"`
+	DateAndTime time.Time `json:"date_and_time"`
+	Status string `json:"status_booking"`
 }
 
 type Restaurant struct{
-	ID int64 `json:"RestaurantID"`
-	Name string `json:"Name"`
-	Location string `json:"Location"`
-	Contact string `json:"Contact_Number"`
+	ID int64 `json:"id"`
+	Name string `json:"name_restaurant"`
+	Location string `json:"location_restaurant"`
+	Contact string `json:"contact_number"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 type ChatMessage struct{
-	ID int64 `json:"MessageID"`
-	SenderID int64 `json:"SenderID"`
-	ReceiverID int64 `json:"ReceiverID"`
-	MessageText string `json:"MessageText"`
-	Timestamp time.Time `json:"Timestamp"`
+	ID int64 `json:"messageID"`
+	SenderID int64 `json:"senderID"`
+	ReceiverID int64 `json:"receiverID"`
+	MessageText string `json:"messageText"`
+	Timestamp time.Time `json:"timestamp"`
 }

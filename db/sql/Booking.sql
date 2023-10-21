@@ -1,33 +1,34 @@
 -- name: CreateBooking :one
-INSERT INTO Booking (
-  ClientID,
-  BookerID,
-  RestaurantID,
-  Date_and_Time,
-  Status
+INSERT INTO booking (
+  client_id,
+  booker_id,
+  restaurant_id,
+  date_and_time,
+  status_booking
 ) VALUES (
-  $1, $2, $3, $4, $5
+  $1::serial, $2::serial, $3::serial, $4, $5
 )
 RETURNING *;
 
 -- name: GetBooking :one
-SELECT * FROM Booking
+SELECT * FROM booking
 WHERE id = $1 LIMIT 1;
 
 -- name: GetBookingForUpdate :one
-SELECT * FROM Booking
+SELECT * FROM booking
 WHERE id = $1 LIMIT 1
 FOR NO KEY UPDATE;
 
 -- name: ListBookingAccount :many
 SELECT * FROM Booking
+WHERE name_booker = $1
 ORDER BY id
-LIMIT $3
+LIMIT $4
 OFFSET $5;
 
 -- name: UpdateBooking :one
 UPDATE Booking
-SET BookerID = $2 AND SET Status = $5
+SET booker_id = $2, status_booking = $5
 WHERE id = $1
 RETURNING *;
 

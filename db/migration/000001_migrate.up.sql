@@ -1,41 +1,44 @@
-CREATE TABLE "Client" (
-  "ClientID" serial PRIMARY KEY,
-  "Name" VARCHAR(255),
-  "Email" VARCHAR(255),
-  "Phone_Number" VARCHAR(20),
-  "Password" VARCHAR(20),
-  "Address" TEXT
+CREATE TABLE "client" (
+  "id" serial PRIMARY KEY,
+  "name_client" VARCHAR(255),
+  "email" VARCHAR(255),
+  "phone_number" VARCHAR(20),
+  "pwd" VARCHAR(20),
+  "address_client" TEXT,
+  "created_at" timestamptz
 );
 
-CREATE TABLE "Booker" (
-  "BookerID" serial PRIMARY KEY,
-  "Name" VARCHAR(255),
-  "Email" VARCHAR(255),
-  "Phone_Number" VARCHAR(20),
-  "Password" VARCHAR(20),
-  "Address" TEXT
+CREATE TABLE "booker" (
+  "id" serial PRIMARY KEY,
+  "name_booker" VARCHAR(255),
+  "email" VARCHAR(255),
+  "phone_number" VARCHAR(20),
+  "pwd" VARCHAR(20),
+  "address_booker" TEXT,
+  "created_at" timestamptz
 );
 
-CREATE TABLE "Restaurant" (
-  "RestaurantID" serial PRIMARY KEY,
-  "Name" VARCHAR(255),
-  "Location" VARCHAR(255),
-  "Contact_Number" VARCHAR(20)
+CREATE TABLE "restaurant" (
+  "id" serial PRIMARY KEY,
+  "name_restaurant" VARCHAR(255),
+  "location_restaurant" VARCHAR(255),
+  "contact_number" VARCHAR(20),
+  "created_at" timestamptz
 );
 
-CREATE TABLE "Booking" (
-  "BookingID" serial PRIMARY KEY,
-  "ClientID" INT REFERENCES "Client" ("ClientID"),
-  "BookerID" INT REFERENCES "Booker" ("BookerID"),
-  "RestaurantID" INT REFERENCES "Restaurant" ("RestaurantID"),
-  "Date_and_Time" timestamptz,
-  "Status" VARCHAR(20)
+CREATE TABLE "booking" (
+  "id" serial PRIMARY KEY,
+  "client_id" INT REFERENCES "client" ("id"),
+  "booker_id" INT REFERENCES "booker" ("id"),
+  "restaurant_id" INT REFERENCES "restaurant" ("id"),
+  "date_and_time" timestamptz,
+  "status_booking" VARCHAR(20)
 );
 
-CREATE TABLE "ChatMessage" (
-  "MessageID" serial PRIMARY KEY,
-  "SenderID" INT REFERENCES "Client" ("ClientID"),
-  "ReceiverID" INT REFERENCES "Client" ("ClientID"),
-  "MessageText" TEXT,
-  "Timestamp" timestamptz
+CREATE TABLE "chat_message" (
+  "id" serial PRIMARY KEY,
+  "sender_id" INT REFERENCES "client" ("id"),
+  "receiver_id" INT REFERENCES "client" ("id"),
+  "message_text" TEXT,
+  "timestamp" timestamptz
 );
