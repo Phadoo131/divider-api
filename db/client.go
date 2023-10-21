@@ -26,7 +26,7 @@ type createClientParam struct{
 func (q *Queries) CreateClientAccount(ctx context.Context, arg createClientParam) (Client, error) {
 	row := q.db.QueryRow(ctx, createClient, arg.Name, arg.Email, arg.PhoneNum, arg.Password, arg.Address)
 	var i Client
-	err := row.Scan(&i.ID, &i.Name, &i.Email, &i.PhoneNum, &i.PassWord, &i.Address)
+	err := row.Scan(&i.ID, &i.Name, &i.Email, &i.PhoneNum, &i.Password, &i.Address)
 	return i, err
 }
 
@@ -63,7 +63,7 @@ func (q *Queries) GetClientAccountForUpdate(ctx context.Context, id int64) (Clie
 		&i.Name,
 		&i.Email,
 		&i.PhoneNum,
-		&i.PassWord,
+		&i.Password,
 		&i.Address,
 		&i.CreatedAt,
 	)
@@ -97,7 +97,7 @@ func (q *Queries) ListClientAccounts(ctx context.Context, arg ListClientAccounts
 			&i.Name,
 			&i.Email,
 			&i.PhoneNum,
-			&i.PassWord,
+			&i.Password,
 			&i.Address,
 			&i.CreatedAt,
 		); err != nil {
@@ -130,7 +130,7 @@ func (q *Queries) UpdateClientPassword(ctx context.Context, arg UpdateClientAcco
 		&i.Name,
 		&i.Email,
 		&i.PhoneNum,
-		&i.PassWord,
+		&i.Password,
 		&i.Address,
 		&i.CreatedAt,
 	)

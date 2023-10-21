@@ -9,7 +9,7 @@ type Client struct{
 	Name string `json:"name_client"`
 	Email string `json:"email"`
 	PhoneNum string `json:"phone_number"`
-	PassWord string `json:"pwd"`
+	Password string `json:"pwd"`
 	Address string `json:"address_client"`
 	CreatedAt time.Time `json:"created_at"`
 }
@@ -19,7 +19,7 @@ type Booker struct{
 	Name string `json:"name_booker"`
 	Email string `json:"email"`
 	PhoneNum string `json:"phone_number"`
-	PassWord string `json:"pwd"`
+	Password string `json:"pwd"`
 	Address string `json:"address_client"`
 	CreatedAt time.Time `json:"created_at"`
 }

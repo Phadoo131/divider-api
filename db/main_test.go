@@ -1,33 +1,35 @@
 package db
 
 import (
-	"testing"
+	"context"
 	"log"
 	"os"
-	"database/sql"
-	"context"
+	"testing"
 
+	_"github.com/Phadoo131/divider-api/util"
+	_"github.com/jackc/pgx/v5"
+	_ "github.com/jackc/pgx/v5/pgconn"
+	"github.com/jackc/pgx/v5/pgxpool"
 	_"github.com/joho/godotenv"
-	_"github.com/lib/pq"
-	"github.com/jackc/pgx/v5"
-	_"github.com/jackc/pgx/v5/pgconn"
+	_ "github.com/lib/pq"
 )
 var testQuerie *Queries
-var testDB *sql.DB
-
-var dbSource = os.Getenv("dbSource")
+var dbSource = os.Getenv("DB_SOURCE")
 
 func TestMain(m *testing.M){
 	var err error
 
-	testDB, err := pgx.Connect(context.Background(), dbSource)
+	// config, err := util.LoadConfig("../..")
+	// if err != nil {
+	// 	log.Fatal("cannot load config:", err)
+	// }
+
+	conn, err := pgxpool.New(context.Background(), dbSource)
 	if err != nil {
 		log.Fatal("Unable to connect to database: ", err)
 		os.Exit(1)
 	}
-	defer testDB.Close(context.Background())
-
-	testQuerie = New(testDB)
+	testQuerie = New(conn)
 
 	os.Exit(m.Run())
 }

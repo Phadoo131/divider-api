@@ -24,9 +24,9 @@ type createBookerParam struct{
 }
 
 func (q *Queries) CreateBookerAccount(ctx context.Context, arg createBookerParam) (Booker, error) {
-	row := q.db.QueryRow(ctx, createBooker, arg.Name, arg.Email, arg.PhoneNum, arg.Password, arg.Address)
+	row := q.db.QueryRow(ctx, createBooker, arg.Name)
 	var i Booker
-	err := row.Scan(&i.ID, &i.Name, &i.Email, &i.PhoneNum, &i.PassWord, &i.Address)
+	err := row.Scan(&i.ID, &i.Name, &i.Email, &i.PhoneNum, &i.Password, &i.Address)
 	return i, err
 }
 
@@ -63,7 +63,7 @@ func (q *Queries) GetBookerAccountForUpdate(ctx context.Context, id int64) (Book
 		&i.Name,
 		&i.Email,
 		&i.PhoneNum,
-		&i.PassWord,
+		&i.Password,
 		&i.Address,
 		&i.CreatedAt,
 	)
@@ -97,7 +97,7 @@ func (q *Queries) ListBookerAccounts(ctx context.Context, arg ListBookerAccounts
 			&i.Name,
 			&i.Email,
 			&i.PhoneNum,
-			&i.PassWord,
+			&i.Password,
 			&i.Address,
 			&i.CreatedAt,
 		); err != nil {
@@ -130,7 +130,7 @@ func (q *Queries) UpdateBookerPassword(ctx context.Context, arg UpdateBookerAcco
 		&i.Name,
 		&i.Email,
 		&i.PhoneNum,
-		&i.PassWord,
+		&i.Password,
 		&i.Address,
 		&i.CreatedAt,
 	)
